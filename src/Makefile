@@ -3,9 +3,12 @@
 
 .PHONY: default
 default:
+	cd t && $(MAKE)
 
 .PHONY: clean
 clean:
+	cd t && $(MAKE) clean
 
 .PHONY: test
 test:
+	cd t && $(MAKE) test
