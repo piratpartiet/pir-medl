@@ -107,6 +107,39 @@ CREATE TABLE meta (
 );
 INSERT INTO "meta" VALUES('dbversion', $DB_VERSION);
 INSERT INTO "meta" VALUES('program', '"pir-medl"');
+CREATE TABLE members (
+  id INTEGER,
+  name TEXT
+    CONSTRAINT members_name_length
+      CHECK (length(name) > 0)
+    NOT NULL,
+  address TEXT
+  postcode TEXT,
+  city TEXT,
+  fylke INTEGER
+    CONSTRAINT members_fylke_valid
+      CHECK (fylke BETWEEN 1 AND 21 AND fylke <> 13)
+    NOT NULL,
+  email TEXT,
+  phone TEXT,
+  birthdate TEXT
+    CONSTRAINT members_birthdate_length
+      CHECK (birthdate IS NULL OR length(birthdate) = 10)
+    CONSTRAINT members_birthdate_valid
+      CHECK (birthdate IS NULL OR datetime(birthdate) IS NOT NULL),
+  susp INTEGER
+    CONSTRAINT members_susp_valid
+      CHECK (susp between 0 AND 2)
+    NOT NULL
+);
+CREATE TABLE payment (
+  date TEXT
+    CONSTRAINT payment_date_length
+      CHECK (date IS NULL OR length(date) = 10)
+    CONSTRAINT payment_date_valid
+      CHECK (date IS NULL OR datetime(date) IS NOT NULL),
+  userid INTEGER
+);
 COMMIT;
 SQL_END
 
