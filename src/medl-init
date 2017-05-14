@@ -4,7 +4,7 @@
 # medl-init
 # File ID: e5eca068-38e9-11e7-8341-f74d993421b0
 #
-# [Description]
+# Initialise the member database
 #
 # Author: Øyvind A. Holm <sunny@sunbase.org>
 # License: GNU General Public License version 2 or later.
@@ -38,6 +38,8 @@ opt_verbose=$(($opt_verbose - $opt_quiet))
 if test "$opt_help" = "1"; then
 	test $opt_verbose -gt 0 && { echo; echo $progname $VERSION; }
 	cat <<END
+
+Initialise the member database.
 
 Usage: $progname [options]
 
