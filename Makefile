@@ -3,6 +3,7 @@
 
 .PHONY: default
 default: README.html
+	cd src && $(MAKE)
 
 README.html: README.md
 	printf '<html>\n<head>\n' >README.html
@@ -16,6 +17,7 @@ README.html: README.md
 .PHONY: clean
 clean:
 	rm -f README.html
+	cd src && $(MAKE) clean
 	cd t && $(MAKE) clean
 
 .PHONY: edit
@@ -24,6 +26,7 @@ edit:
 
 .PHONY: test
 test:
+	cd src && $(MAKE) test
 	cd t && $(MAKE) test
 
 .PHONY: view
