@@ -3,6 +3,7 @@
 
 .PHONY: test
 test:
+	./installed_progs.t
 
 .PHONY: clean
 clean:
