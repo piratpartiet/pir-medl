@@ -24,6 +24,9 @@ Disse make-kommandoene er tilgjengelige:
 - **make README.html**<br />
   Generer `README.html` fra `README.md`. Trenger `cmark`(1) fra 
   <http://commonmark.org>. Gjøres automatisk av `make`.
+- **make view**<br />
+  Kjør `make README.html` og vis den med `lynx`(1) for å se at alt ser 
+  greit ut.
 
 Lisens
 ======

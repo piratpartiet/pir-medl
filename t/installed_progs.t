@@ -138,7 +138,6 @@ END
     # installed('grep --version', '/GNU grep/', 'stdout');
     # installed('gzip --version', '/^gzip \d/', 'stdout');
     # installed('lilypond --version', '/^GNU LilyPond 2/', 'stdout');
-    # installed('lynx --version', '/^Lynx Version \d/', 'stdout');
     # installed('mc --version', '/GNU Midnight Commander/', 'stdout');
     # installed('mysql --version', '/^$/', 'stdout', 'MySQL is not installed');
     # installed('ncdu -v', '/^ncdu \d/', 'stdout');
@@ -173,6 +172,7 @@ END
     diag("Checking important software...");
     installed('cmark --version', '/^cmark \d+\.\d+\.\d+/', 'stdout');
     installed('git --version', '/^git version 2\.13/', 'stdout');
+    installed('lynx --version', '/^Lynx Version \d/', 'stdout');
     installed('make --version', '/GNU Make/', 'stdout');
 
     # is(`echo "SELECT json('[\\"a\\",   4,   true, { \\"abc\\"  :\\"def\\"}]');" | sqlite3 2>/dev/null`,

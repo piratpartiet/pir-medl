@@ -21,3 +21,7 @@ clean:
 .PHONY: test
 test:
 	cd t && $(MAKE) test
+
+.PHONY: view
+view: README.html
+	lynx README.html
