@@ -13,6 +13,8 @@
 progname=medl-init
 VERSION=0.0.0
 
+DB_VERSION=0 # Current database version
+SQLITE=sqlite3
 STD_DB="$HOME/.pir-medl/pir-medl.sqlite"
 
 opt_database=
@@ -85,6 +87,29 @@ else
 	db="$STD_DB"
 fi
 
-msg 2 db = \"$db\"
+if test -e "$db"; then
+	echo $progname: $db: SQLite database already exists
+	exit 1
+fi
+
+dbdir="$(dirname "$db")"
+test -d "$dbdir" || mkdir "$dbdir"
+
+cat <<SQL_END | $SQLITE "$db" || exit 1
+BEGIN TRANSACTION;
+CREATE TABLE meta (
+  key TEXT
+    UNIQUE
+    NOT NULL,
+  value JSON
+    CONSTRAINT meta_value_valid_json
+      CHECK (json_valid(value))
+);
+INSERT INTO "meta" VALUES('dbversion', $DB_VERSION);
+INSERT INTO "meta" VALUES('program', '"pir-medl"');
+COMMIT;
+SQL_END
+
+echo "$progname: Database $db created" >&2
 
 # vim: set ts=8 sw=8 sts=8 noet fo+=w tw=79 fenc=UTF-8 :

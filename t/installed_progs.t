@@ -114,7 +114,7 @@ END
     # touch tr true truncate tsort tty uname unexpand uniq unlink uptime users 
     # vdir wc who whoami yes
     coreutils(qw{
-        printf
+        dirname mkdir printf
     });
 
     # installed('archivemount --version', '/^archivemount version \d/', 'stderr');
@@ -151,7 +151,6 @@ END
     # installed('rsync --version', '/^rsync\s+version \d/', 'stdout');
     # installed('screen --version', '/^Screen version \d/', 'stdout');
     # installed('script --version', '/^script .+\butil-linux\b/', 'stdout');
-    # installed('sqlite3 --version', '/^3\.17\.0 2017-02-13 16:02:40/', 'stdout');
     # installed('ssh -V', '/OpenSSH/', 'stderr');
     # installed('sshfs --version', '/SSHFS version \d/', 'stdout');
     # installed('tar --version', '/GNU tar\b/', 'stdout');
@@ -174,6 +173,7 @@ END
     installed('grep --version', '/GNU grep/', 'stdout');
     installed('lynx --version', '/^Lynx Version \d/', 'stdout');
     installed('make --version', '/GNU Make/', 'stdout');
+    installed('sqlite3 --version', '/^3\.17\.0 2017-02-13 16:02:40/', 'stdout');
 
     # is(`echo "SELECT json('[\\"a\\",   4,   true, { \\"abc\\"  :\\"def\\"}]');" | sqlite3 2>/dev/null`,
     #     "[\"a\",4,true,{\"abc\":\"def\"}]\n",
