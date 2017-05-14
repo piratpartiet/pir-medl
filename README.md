@@ -19,11 +19,16 @@ oppdatert samtidig.
 Status
 ------
 
-I planleggingsfasen, men det skal gå greit å få noe med enkel 
-funksjonalitet på plass i løpet av et par dager. Det trengs en maskin 
-der databasen kan kjøres, men systemet inkluderer også en distribuert 
-løsning der alle med behov for det får en lokal kopi av databasen som de 
-kan jobbe med, og synce den mot de andre brukerne av medlemsdatabasen.
+Har begynt på databasestrukturen og de første scriptene. `medl-init` 
+funker, den setter opp databasen, men flere kolonner må sikkert legges 
+til.
+
+Ellers er prosjektet litt i planleggingsfasen, men det skal gå greit å 
+få noe med enkel funksjonalitet på plass i løpet av et par dager. Det 
+trengs en maskin der databasen kan kjøres, men systemet inkluderer også 
+en distribuert løsning der alle med behov for det får en lokal kopi av 
+databasen som de kan jobbe med, og synce den mot de andre brukerne av 
+medlemsdatabasen.
 
 Hvis den distribuerte løsningen skal brukes, kreves det (som vanlig) 
 Git, ellers må folk som vil hente ut eller legge inn info i databasen ha 
@@ -35,7 +40,7 @@ make-kommandoer
 Disse make-kommandoene er tilgjengelige:
 
 - **make**<br />
-  Gjør ingenting foreløpig.
+  Lag `README.html`, utenom det gjør den ikke mye.
 - **make clean**<br />
   Slett alle genererte filer og sett alt tilbake til en jomfruelig 
   tilstand.
