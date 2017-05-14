@@ -21,6 +21,9 @@ Disse make-kommandoene er tilgjengelige:
   Kjør diverse tester for å se at systemet fungerer greit nok. Sjekker 
   også at alle forutsetninger er til stede, som f.eks. installert 
   programvare osv.
+- **make README.html**<br />
+  Generer `README.html` fra `README.md`. Trenger `cmark`(1) fra 
+  <http://commonmark.org>. Gjøres automatisk av `make`.
 
 Lisens
 ======
