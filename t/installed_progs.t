@@ -135,7 +135,6 @@ END
     # installed('git-annex version', '/^git-annex version: /', 'stdout');
     # installed('gnuplot --version', '/^gnuplot /', 'stdout');
     # installed('gpg --version', '/^gpg.+GnuPG\b/', 'stdout');
-    # installed('grep --version', '/GNU grep/', 'stdout');
     # installed('gzip --version', '/^gzip \d/', 'stdout');
     # installed('lilypond --version', '/^GNU LilyPond 2/', 'stdout');
     # installed('mc --version', '/GNU Midnight Commander/', 'stdout');
@@ -172,6 +171,7 @@ END
     diag("Checking important software...");
     installed('cmark --version', '/^cmark \d+\.\d+\.\d+/', 'stdout');
     installed('git --version', '/^git version 2\.13/', 'stdout');
+    installed('grep --version', '/GNU grep/', 'stdout');
     installed('lynx --version', '/^Lynx Version \d/', 'stdout');
     installed('make --version', '/GNU Make/', 'stdout');
 

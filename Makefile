@@ -18,6 +18,10 @@ clean:
 	rm -f README.html
 	cd t && $(MAKE) clean
 
+.PHONY: edit
+edit:
+	$(EDITOR) $$(git ls-files | grep -v -e ^COPYING)
+
 .PHONY: test
 test:
 	cd t && $(MAKE) test
