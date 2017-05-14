@@ -7,6 +7,21 @@ legges til etterhvert. Siden dataene blir lagret i en SQLite-database,
 er det fort gjort å lage små scripts som lager rapporter eller 
 oppdaterer databasen på en enkel og fleksibel måte.
 
+make-kommandoer
+---------------
+
+Disse make-kommandoene er tilgjengelige:
+
+- **make**<br />
+  Gjør ingenting foreløpig.
+- **make clean**<br />
+  Slett alle genererte filer og sett alt tilbake til en jomfruelig 
+  tilstand.
+- **make test**<br />
+  Kjør diverse tester for å se at systemet fungerer greit nok. Sjekker 
+  også at alle forutsetninger er til stede, som f.eks. installert 
+  programvare osv.
+
 Lisens
 ======
 
