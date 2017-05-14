@@ -3,7 +3,6 @@
 
 .PHONY: default
 default:
-	cd t && $(MAKE)
 
 .PHONY: clean
 clean:
