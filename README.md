@@ -7,6 +7,28 @@ legges til etterhvert. Siden dataene blir lagret i en SQLite-database,
 er det fort gjort å lage små scripts som lager rapporter eller 
 oppdaterer databasen på en enkel og fleksibel måte.
 
+Kommentarer og pullrequester er selvfølgelig veldig gode ting, spesielt 
+hvis noen ser at det går galt avgårde. For å holde kommunikasjonen 
+samlet, er det sikkert best å åpne en [issue på 
+Gitlab](https://gitlab.com/piratpartiet/pir-medl/issues) hvis det er noe 
+som kommer opp. [Eller 
+Github](https://github.com/piratpartiet/pir-medl/issues), hvis du liker 
+å henge rundt der istedenfor. Begge repoene på Gitlab og Github blir 
+oppdatert samtidig.
+
+Status
+------
+
+I planleggingsfasen, men det skal gå greit å få noe med enkel 
+funksjonalitet på plass i løpet av et par dager. Det trengs en maskin 
+der databasen kan kjøres, men systemet inkluderer også en distribuert 
+løsning der alle med behov for det får en lokal kopi av databasen som de 
+kan jobbe med, og synce den mot de andre brukerne av medlemsdatabasen.
+
+Hvis den distribuerte løsningen skal brukes, kreves det (som vanlig) 
+Git, ellers må folk som vil hente ut eller legge inn info i databasen ha 
+tilgang til en server programmet kan kjøres på.
+
 make-kommandoer
 ---------------
 
