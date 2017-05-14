@@ -35,6 +35,16 @@ while test -n "$1"; do
 done
 opt_verbose=$(($opt_verbose - $opt_quiet))
 
+# msg(): Display debugging or informational message. The first argument decides 
+# which verbosity level to use. If $opt_verbose (affected by -v/--verbose and 
+# -q/--quiet) is lower than $1, the message is not printed. The rest of the 
+# arguments are displayed with the format "$progname: $*".
+msg() {
+	test $opt_verbose -ge $1 || return
+	shift
+	echo "$progname: $*" >&2
+}
+
 if test "$opt_help" = "1"; then
 	test $opt_verbose -gt 0 && { echo; echo $progname $VERSION; }
 	cat <<END
