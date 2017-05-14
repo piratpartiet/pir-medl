@@ -19,6 +19,8 @@ CREATE TABLE synced (
     CONSTRAINT synced_date_valid
       CHECK (date IS NULL OR datetime(date) IS NOT NULL)
 );
+INSERT INTO "synced" VALUES('src/medl-init','Lib/std/sh','38a62d4427a4c364b22a6007a862ba2e73eaf9ad','2017-05-14 21:11:29');
+INSERT INTO "synced" VALUES('src/t/medl-init.t','Lib/std/perl-tests-tab','38a62d4427a4c364b22a6007a862ba2e73eaf9ad','2017-05-14 21:10:58');
 CREATE TABLE todo (
   file TEXT
     CONSTRAINT todo_file_length
