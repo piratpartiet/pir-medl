@@ -29,6 +29,11 @@ test:
 	cd src && $(MAKE) test
 	cd t && $(MAKE) test
 
+.PHONY: valgrind
+valgrind:
+	cd src && $(MAKE) valgrind
+	cd t && $(MAKE) test
+
 .PHONY: view
 view: README.html
 	lynx README.html

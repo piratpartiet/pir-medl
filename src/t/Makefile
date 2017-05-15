@@ -12,3 +12,7 @@ build:
 
 .PHONY: clean
 clean:
+
+.PHONY: valgrind
+valgrind: build
+	./medl.t --valgrind

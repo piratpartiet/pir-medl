@@ -51,6 +51,9 @@ Disse make-kommandoene er tilgjengelige:
   Kjør diverse tester for å se at systemet fungerer greit nok. Sjekker 
   også at alle forutsetninger er til stede, som f.eks. installert 
   programvare osv.
+- **make valgrind**<br />
+  Kjør `make test` og bruk Valgrind. Tar mye lengre tid enn `make test`, 
+  men den tar det meste av tvilsomme ting.
 - **make edit**<br />
   Rediger alle filene i repoen. Bruker favoritteditoren din, det vil si 
   den som er definert i `EDITOR`.

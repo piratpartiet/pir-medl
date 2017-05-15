@@ -36,3 +36,7 @@ tags: $(CFILES) $(HFILES)
 .PHONY: test
 test:
 	cd t && $(MAKE) test
+
+.PHONY: valgrind
+valgrind:
+	cd t && $(MAKE) valgrind
