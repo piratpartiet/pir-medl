@@ -140,7 +140,6 @@ END
     # installed('mc --version', '/GNU Midnight Commander/', 'stdout');
     # installed('mysql --version', '/^$/', 'stdout', 'MySQL is not installed');
     # installed('ncdu -v', '/^ncdu \d/', 'stdout');
-    # installed('perl --version', '/This is perl( |, v)5/', 'stdout');
     # installed('pinfo --version', '/^Przemek\'s Info Viewer /', 'stdout');
     # installed('pip --version', '/^pip \d/', 'stdout');
     # installed('pv --version', '/^pv \d/', 'stdout');
@@ -173,6 +172,7 @@ END
     installed('grep --version', '/GNU grep/', 'stdout');
     installed('lynx --version', '/^Lynx Version \d/', 'stdout');
     installed('make --version', '/GNU Make/', 'stdout');
+    installed('perl --version', '/This is perl( |, v)5/', 'stdout');
     installed('sqlite3 --version', '/^3\.17\.0 2017-02-13 16:02:40/', 'stdout');
 
     # is(`echo "SELECT json('[\\"a\\",   4,   true, { \\"abc\\"  :\\"def\\"}]');" | sqlite3 2>/dev/null`,
