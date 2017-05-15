@@ -3,6 +3,7 @@
 
 .PHONY: test
 test:
+	./medl-add.t
 	./medl-init.t
 
 .PHONY: clean

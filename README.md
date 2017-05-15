@@ -21,7 +21,8 @@ Status
 
 Har begynt på databasestrukturen og de første scriptene. `medl-init` 
 funker, den setter opp databasen, men flere kolonner må sikkert legges 
-til.
+til. Holder på med `medl-add` nå, kan være greit å få noen medlemmer inn 
+i databasen så det kan testes litt.
 
 Ellers er prosjektet litt i planleggingsfasen, men det skal gå greit å 
 få noe med enkel funksjonalitet på plass i løpet av et par dager. Det 
