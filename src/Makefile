@@ -8,7 +8,7 @@ DEPS = $(HFILES) Makefile
 CC = cc
 LD = cc
 CCFLAGS = -Wall -Wextra -Werror -O0 -c -g -pedantic
-LDFLAGS = -Wall
+LDFLAGS = -Wall -Wextra -Werror
 LIBS = -lpthread -ldl
 EXEC = medl
 
