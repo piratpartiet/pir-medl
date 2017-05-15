@@ -4,7 +4,7 @@
 # medl-add
 # File ID: 098fb3f8-3902-11e7-85a0-db5caa6d21d3
 #
-# [Description]
+# Add members to the database
 #
 # Character set: UTF-8
 # ©opyleft 2017– Øyvind A. Holm <sunny@sunbase.org>
@@ -71,6 +71,8 @@ sub usage {
 		print_version();
 	}
 	print(<<"END");
+
+Add members to the database.
 
 Usage: $progname [options] [file [files [...]]]
 
