@@ -123,7 +123,6 @@ END
     # installed('bc --version', '/^bc \d.*Free Software Foundation/s', 'stdout');
     # installed('cmake --version', '/^cmake version \d/', 'stdout');
     # installed('cronolog --version', '/^cronolog version \d/', 'stderr');
-    # installed('ctags --version', '/^Exuberant Ctags \d/', 'stdout');
     # installed('curl --version', '/^curl /', 'stdout');
     # installed('dict --version', '/^dict \d/', 'stdout');
     # installed('echo ABC ZZZ aabel abbel abc bbbe © Å Æ Ø å æ ø → 🤘 | fmt -1 | sort', '/^ABC\nZZZ\naabel\nabbel\nabc\nbbbe\n©\nÅ\nÆ\nØ\nå\næ\nø\n→\n🤘\n$/', 'stdout', 'Use C sorting order');
@@ -131,7 +130,6 @@ END
     # installed('find --version', '/GNU findutils/', 'stdout');
     # installed('fossil version', '/^This is fossil version 2\.1 /', 'stdout');
     # installed('gadu --version', '/git-annex-utils \d/', 'stdout');
-    # installed('gcc --version', '/^gcc /', 'stdout');
     # installed('git-annex version', '/^git-annex version: /', 'stdout');
     # installed('gnuplot --version', '/^gnuplot /', 'stdout');
     # installed('gpg --version', '/^gpg.+GnuPG\b/', 'stdout');
@@ -168,6 +166,8 @@ END
     # repeat_test('uuidgen -t', 100, "^$v1_templ\$");
     diag("Checking important software...");
     installed('cmark --version', '/^cmark \d+\.\d+\.\d+/', 'stdout');
+    installed('ctags --version', '/^Exuberant Ctags \d/', 'stdout');
+    installed('gcc --version', '/^gcc /', 'stdout');
     installed('git --version', '/^git version 2\.13/', 'stdout');
     installed('grep --version', '/GNU grep/', 'stdout');
     installed('lynx --version', '/^Lynx Version \d/', 'stdout');
