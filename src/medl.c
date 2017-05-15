@@ -285,7 +285,7 @@ int main(int argc, char *argv[])
 {
 	int retval;
 	struct Options opt;
-	char *dbname;
+	struct Rc rc;
 
 	progname = argv[0];
 
@@ -304,10 +304,10 @@ int main(int argc, char *argv[])
 	if (opt.license)
 		return print_license();
 
-	dbname = get_dbname(&opt);
-	if (!dbname)
+	rc.dbname = get_dbname(&opt);
+	if (!rc.dbname)
 		return EXIT_FAILURE;
-	msg(3, "dbname = \"%s\"", dbname);
+	msg(3, "rc.dbname = \"%s\"", rc.dbname);
 	msg(3, "opt.dbname = \"%s\"", opt.dbname);
 
 	if (optind < argc) {
@@ -317,7 +317,7 @@ int main(int argc, char *argv[])
 			msg(3, "Non-option arg: %s", argv[t]);
 	}
 
-	free(dbname);
+	free(rc.dbname);
 
 	msg(3, "Returning from main() with value %d", retval);
 	return retval;

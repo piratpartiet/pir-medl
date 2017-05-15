@@ -75,6 +75,9 @@ struct Options {
 	int verbose;
 	bool version;
 };
+struct Rc {
+	char *dbname;
+};
 
 /*
  * Function prototypes
