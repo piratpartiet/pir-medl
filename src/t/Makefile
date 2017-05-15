@@ -3,7 +3,6 @@
 
 .PHONY: test
 test: build
-	./medl-add.perl.t
 	./medl-add.t
 	./medl-init.t
 
