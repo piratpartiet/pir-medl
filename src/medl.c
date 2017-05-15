@@ -149,6 +149,8 @@ int print_version(void)
 
 int usage(const int retval)
 {
+	char *logdir = get_dbname(NULL);
+
 	if (retval != EXIT_SUCCESS) {
 		fprintf(stderr, "\nType \"%s --help\" for help screen. "
 		                "Returning with value %d.\n",
@@ -164,6 +166,9 @@ int usage(const int retval)
 	printf("\n");
 	printf("Options:\n");
 	printf("\n");
+	printf("  -d FILE, --dbname FILE\n"
+	       "    Use FILE as database instead of the default value.\n"
+	       "    Current value: %s\n", logdir);
 	printf("  -h, --help\n"
 	       "    Show this help.\n");
 	printf("  --license\n"
@@ -175,6 +180,7 @@ int usage(const int retval)
 	printf("  --version\n"
 	       "    Print version information.\n");
 	printf("\n");
+	free(logdir);
 
 	return retval;
 }
@@ -200,6 +206,9 @@ int choose_opt_action(struct Options *dest,
 			dest->license = TRUE;
 		else if (!strcmp(opts->name, "version"))
 			dest->version = TRUE;
+		break;
+	case 'd':
+		dest->dbname = optarg;
 		break;
 	case 'h':
 		dest->help = TRUE;
@@ -232,6 +241,7 @@ int parse_options(struct Options *dest, const int argc, char * const argv[])
 	assert(dest);
 	assert(argv);
 
+	dest->dbname = NULL;
 	dest->help = FALSE;
 	dest->license = FALSE;
 	dest->verbose = 0;
@@ -240,6 +250,7 @@ int parse_options(struct Options *dest, const int argc, char * const argv[])
 	while (retval == EXIT_SUCCESS) {
 		int option_index = 0;
 		static struct option long_options[] = {
+			{"dbname", required_argument, 0, 'd'},
 			{"help", no_argument, 0, 'h'},
 			{"license", no_argument, 0, 0},
 			{"quiet", no_argument, 0, 'q'},
@@ -249,6 +260,7 @@ int parse_options(struct Options *dest, const int argc, char * const argv[])
 		};
 
 		c = getopt_long(argc, argv,
+		                "d:" /* --dbname */
 		                "h"  /* --help */
 		                "q"  /* --quiet */
 		                "v"  /* --verbose */
@@ -273,6 +285,7 @@ int main(int argc, char *argv[])
 {
 	int retval;
 	struct Options opt;
+	char *dbname;
 
 	progname = argv[0];
 
@@ -291,12 +304,20 @@ int main(int argc, char *argv[])
 	if (opt.license)
 		return print_license();
 
+	dbname = get_dbname(&opt);
+	if (!dbname)
+		return EXIT_FAILURE;
+	msg(3, "dbname = \"%s\"", dbname);
+	msg(3, "opt.dbname = \"%s\"", opt.dbname);
+
 	if (optind < argc) {
 		int t;
 
 		for (t = optind; t < argc; t++)
 			msg(3, "Non-option arg: %s", argv[t]);
 	}
+
+	free(dbname);
 
 	msg(3, "Returning from main() with value %d", retval);
 	return retval;

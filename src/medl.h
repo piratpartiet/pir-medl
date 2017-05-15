@@ -39,6 +39,9 @@
 
 #undef NDEBUG
 
+#define ENV_DBNAME  "MEDL_DB"
+#define STD_DBNAME  "%s/.pir-medl/pir-medl.sqlite"
+
 /*
  * Standard header files
  */
@@ -66,6 +69,7 @@
 
 typedef unsigned char bool;
 struct Options {
+	char *dbname;
 	bool help;
 	bool license;
 	int verbose;
@@ -79,6 +83,7 @@ struct Options {
 #if 1 /* Set to 0 to test without prototypes */
 
 /* environ.c */
+extern char *get_dbname(const struct Options *opt);
 
 /* medl.c */
 extern int verbose_level(const int action, ...);
