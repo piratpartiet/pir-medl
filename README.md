@@ -22,9 +22,9 @@ Status
 Har satt opp forslag til databasestruktur og har startet på `medl`. Init 
 av databasen funker, men man vil jo gjerne at det skjer mer enn det. Til 
 å begynne med blir det en kommandolinjeklient, men det kan klaskes på 
-GUI, Ncurses og/eller webgrensesnitt etterhvert. Det skal også kunne 
+GUI, ncurses og/eller webgrensesnitt etterhvert. Det skal også kunne 
 brukes som et API der `medl` mottar kommandoer i form av JSON fra stdin, 
-gjør sine ting og leverer respons til stdout.
+gjør sine ting og leverer respons og data som JSON til stdout.
 
 Saken skrives i C, bruker C89 for å få det portabelt. Det skal være 
 mulig å kompilere på (GNU/)Linux, alt av BSD-er, MS Windows og den der 
