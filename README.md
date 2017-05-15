@@ -24,10 +24,11 @@ funker, den setter opp databasen, men flere kolonner må sikkert legges
 til.
 
 Det ser ut til at saken kanskje ender opp i C, og istedenfor mange små 
-scripts skjer alt i en fil, `medl`.
+scripts skjer alt i en fil, `medl`. Den nyfødte `medl-init` blir lagt 
+inn der.
 
 Ellers er prosjektet litt i planleggingsfasen, men det skal gå greit å 
-få noe med enkel funksjonalitet på plass i løpet av et par dager. Det 
+få noe med enkel funksjonalitet på plass i løpet av noen få dager. Det 
 trengs en maskin der databasen kan kjøres, men systemet inkluderer også 
 en distribuert løsning der alle med behov for det får en lokal kopi av 
 databasen som de kan jobbe med, og synce den mot de andre brukerne av 
@@ -43,7 +44,7 @@ make-kommandoer
 Disse make-kommandoene er tilgjengelige:
 
 - **make**<br />
-  Lag `README.html`, utenom det gjør den ikke mye.
+  Kompiler tingene i `src/` og lag `README.html`.
 - **make clean**<br />
   Slett alle genererte filer og sett alt tilbake til en jomfruelig 
   tilstand.
@@ -65,7 +66,7 @@ Disse make-kommandoene er tilgjengelige:
   greit ut.
 
 Lisens
-======
+------
 
 This program is free software; you can redistribute it and/or modify it 
 under the terms of the GNU General Public License as published by the 
