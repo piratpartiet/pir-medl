@@ -85,6 +85,8 @@ struct Rc {
 
 #if 1 /* Set to 0 to test without prototypes */
 
+/* dbinit.c */
+
 /* environ.c */
 extern char *get_dbname(const struct Options *opt);
 
