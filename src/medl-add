@@ -129,7 +129,7 @@ sub sql {
 		$sql_error = 1;
 	}
 	return join('', @retval);
-} # sql()
+}
 
 __END__
 
