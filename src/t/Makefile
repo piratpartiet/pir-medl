@@ -3,8 +3,8 @@
 
 .PHONY: test
 test: build
-	./medl-add.t
 	./medl-init.t
+	./medl.t
 
 .PHONY: build
 build:

@@ -1,5 +1,5 @@
 /*
- * medl-add.h
+ * medl.h
  * File ID: decca9ba-390a-11e7-9f45-f74d993421b0
  *
  * (C)opyleft 2017- Øyvind A. Holm <sunny@sunbase.org>
@@ -78,7 +78,7 @@ struct Options {
 
 #if 1 /* Set to 0 to test without prototypes */
 
-/* medl-add.c */
+/* medl.c */
 extern int verbose_level(const int action, ...);
 extern int msg(const int verbose, const char *format, ...);
 extern int myerror(const char *format, ...);

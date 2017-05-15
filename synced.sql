@@ -20,11 +20,11 @@ CREATE TABLE synced (
       CHECK (date IS NULL OR datetime(date) IS NOT NULL)
 );
 INSERT INTO "synced" VALUES('src/Makefile','Lib/std/c/Makefile','38a62d4427a4c364b22a6007a862ba2e73eaf9ad','2017-05-15 01:07:30');
-INSERT INTO "synced" VALUES('src/medl-add.c','Lib/std/c/std.c','38a62d4427a4c364b22a6007a862ba2e73eaf9ad','2017-05-15 01:07:30');
-INSERT INTO "synced" VALUES('src/medl-add.h','Lib/std/c/std.h','38a62d4427a4c364b22a6007a862ba2e73eaf9ad','2017-05-15 01:07:30');
 INSERT INTO "synced" VALUES('src/medl-init','Lib/std/sh','38a62d4427a4c364b22a6007a862ba2e73eaf9ad','2017-05-14 21:11:29');
-INSERT INTO "synced" VALUES('src/t/medl-add.t','Lib/std/perl-tests-tab','38a62d4427a4c364b22a6007a862ba2e73eaf9ad','2017-05-15 02:10:49');
+INSERT INTO "synced" VALUES('src/medl.c','Lib/std/c/std.c','38a62d4427a4c364b22a6007a862ba2e73eaf9ad','2017-05-15 01:07:30');
+INSERT INTO "synced" VALUES('src/medl.h','Lib/std/c/std.h','38a62d4427a4c364b22a6007a862ba2e73eaf9ad','2017-05-15 01:07:30');
 INSERT INTO "synced" VALUES('src/t/medl-init.t','Lib/std/perl-tests-tab','38a62d4427a4c364b22a6007a862ba2e73eaf9ad','2017-05-14 21:10:58');
+INSERT INTO "synced" VALUES('src/t/medl.t','Lib/std/perl-tests-tab','38a62d4427a4c364b22a6007a862ba2e73eaf9ad','2017-05-15 02:10:49');
 CREATE TABLE todo (
   file TEXT
     CONSTRAINT todo_file_length

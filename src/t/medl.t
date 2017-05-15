@@ -1,10 +1,10 @@
 #!/usr/bin/env perl
 
 #==============================================================================
-# medl-add.t
+# medl.t
 # File ID: b72632ba-3913-11e7-a115-f74d993421b0
 #
-# Test suite for medl-add(1).
+# Test suite for medl(1).
 #
 # Character set: UTF-8
 # ©opyleft 2017– Øyvind A. Holm <sunny@sunbase.org>
@@ -24,7 +24,7 @@ use Getopt::Long;
 
 local $| = 1;
 
-our $CMD_BASENAME = "medl-add";
+our $CMD_BASENAME = "medl";
 our $CMD = "../$CMD_BASENAME";
 
 our %Opt = (

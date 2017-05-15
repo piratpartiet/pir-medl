@@ -1,5 +1,5 @@
 /*
- * medl-add.c
+ * medl.c
  * File ID: debbf69c-390a-11e7-9169-f74d993421b0
  *
  * (C)opyleft 2017- Øyvind A. Holm <sunny@sunbase.org>
@@ -18,7 +18,7 @@
  * this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "medl-add.h"
+#include "medl.h"
 
 /*
  * Global variables
