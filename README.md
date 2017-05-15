@@ -19,24 +19,31 @@ oppdatert samtidig.
 Status
 ------
 
-Har begynt på databasestrukturen og de første scriptene. `medl-init` 
-funker, den setter opp databasen, men flere kolonner må sikkert legges 
-til.
+Har satt opp forslag til databasestruktur og har startet på `medl`. Init 
+av databasen funker, men man vil jo gjerne at det skjer mer enn det. Til 
+å begynne med blir det en kommandolinjeklient, men det kan klaskes på 
+GUI, Ncurses og/eller webgrensesnitt etterhvert. Det skal også kunne 
+brukes som et API der `medl` mottar kommandoer i form av JSON fra stdin, 
+gjør sine ting og leverer respons til stdout.
 
-Det ser ut til at saken kanskje ender opp i C, og istedenfor mange små 
-scripts skjer alt i en fil, `medl`. Den nyfødte `medl-init` blir lagt 
-inn der.
+Saken skrives i C, bruker C89 for å få det portabelt. Det skal være 
+mulig å kompilere på (GNU/)Linux, alt av BSD-er, MS Windows og den der 
+Mac-tingen.
 
-Ellers er prosjektet litt i planleggingsfasen, men det skal gå greit å 
-få noe med enkel funksjonalitet på plass i løpet av noen få dager. Det 
-trengs en maskin der databasen kan kjøres, men systemet inkluderer også 
-en distribuert løsning der alle med behov for det får en lokal kopi av 
-databasen som de kan jobbe med, og synce den mot de andre brukerne av 
-medlemsdatabasen.
+Det skal gå an å få noe med enkel funksjonalitet på plass i løpet av 
+noen dager. Det vil ikke være behov for en egen server å kjøre dette på, 
+alle som bruker databasen kjører programmet lokalt på egen PC og får en 
+lokal kopi av databasen som de kan jobbe med. Som en bonus fungerer 
+disse kopiene som backuper i tilfelle den sentrale repoen går gaiki.
 
-Hvis den distribuerte løsningen skal brukes, kreves det (som vanlig) 
-Git, ellers må folk som vil hente ut eller legge inn info i databasen ha 
-tilgang til en server programmet kan kjøres på.
+Denne distribueringen bruker Git under panseret, men brukeren trenger 
+ikke å ha noe med Git å gjøre. All syncing foregår automatisk, og det 
+klages bare hvis det oppstår en mergekonflikt. Databasen blir dermed 
+også versjonskontrollert i Git med full historie, og alle forandringer i 
+databasen blir lagret med SHA1, tidspunkt og brukernavn.
+
+Programmet kan selvfølgelig også kjøres på en server der alle som 
+trenger det har tilgang, hvis det er ønskelig.
 
 make-kommandoer
 ---------------
