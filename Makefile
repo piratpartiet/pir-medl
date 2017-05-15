@@ -22,7 +22,7 @@ clean:
 
 .PHONY: edit
 edit:
-	$(EDITOR) $$(git ls-files | grep -v -e ^COPYING)
+	$(EDITOR) $$(git ls-files | grep -v -e ^COPYING -e ^src/sqlite3)
 
 .PHONY: test
 test:

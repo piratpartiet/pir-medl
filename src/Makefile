@@ -28,7 +28,7 @@ clean:
 
 .PHONY: edit
 edit: tags
-	$(EDITOR) *.c *.h Makefile
+	$(EDITOR) $$(git ls-files | grep -v -e ^sqlite3)
 
 tags: $(CFILES) $(HFILES)
 	ctags $(CFILES) $(HFILES)
