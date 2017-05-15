@@ -88,7 +88,7 @@ else
 fi
 
 if test -e "$db"; then
-	echo $progname: $db: SQLite database already exists
+	echo $progname: $db: SQLite database already exists >&2
 	exit 1
 fi
 
