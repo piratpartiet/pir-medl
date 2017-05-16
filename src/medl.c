@@ -278,6 +278,25 @@ int parse_options(struct Options *dest, const int argc, char * const argv[])
 }
 
 /*
+ * do_your_thing_please() - Do everything in one place. Returns EXIT_SUCCESS or 
+ * EXIT_FAILURE.
+ */
+
+int do_your_thing_please(const struct Options *opt)
+{
+	struct Rc rc;
+
+	rc.dbname = get_dbname(opt);
+	if (!rc.dbname)
+		return EXIT_FAILURE;
+	msg(3, "rc.dbname = \"%s\"", rc.dbname);
+	msg(3, "opt.dbname = \"%s\"", opt->dbname);
+	free(rc.dbname);
+
+	return EXIT_SUCCESS;
+}
+
+/*
  * main()
  */
 
@@ -285,7 +304,6 @@ int main(int argc, char *argv[])
 {
 	int retval;
 	struct Options opt;
-	struct Rc rc;
 
 	progname = argv[0];
 
@@ -304,11 +322,7 @@ int main(int argc, char *argv[])
 	if (opt.license)
 		return print_license();
 
-	rc.dbname = get_dbname(&opt);
-	if (!rc.dbname)
-		return EXIT_FAILURE;
-	msg(3, "rc.dbname = \"%s\"", rc.dbname);
-	msg(3, "opt.dbname = \"%s\"", opt.dbname);
+	retval = do_your_thing_please(&opt);
 
 	if (optind < argc) {
 		int t;
@@ -316,8 +330,6 @@ int main(int argc, char *argv[])
 		for (t = optind; t < argc; t++)
 			msg(3, "Non-option arg: %s", argv[t]);
 	}
-
-	free(rc.dbname);
 
 	msg(3, "Returning from main() with value %d", retval);
 	return retval;
