@@ -291,6 +291,8 @@ int do_your_thing_please(const struct Options *opt,
 	rc.dbname = get_dbname(opt);
 	if (!rc.dbname)
 		return EXIT_FAILURE;
+	msg(3, "optind = %d", optind);
+	msg(3, "argc = %d, argv[optind] = \"%s\"", argc, argv[optind]);
 	msg(3, "rc.dbname = \"%s\"", rc.dbname);
 	msg(3, "opt.dbname = \"%s\"", opt->dbname);
 	free(rc.dbname);
