@@ -301,10 +301,6 @@ int do_your_thing_please(const struct Options *opt,
 			msg(3, "Non-option arg: %s", argv[t]);
 	}
 
-	/* Disable compiler warnings temporarily */
-	if (argc == argc) { }
-	if (argv == argv) { }
-
 	return EXIT_SUCCESS;
 }
 
