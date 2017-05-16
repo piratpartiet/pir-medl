@@ -294,6 +294,13 @@ int do_your_thing_please(const struct Options *opt,
 	msg(3, "opt.dbname = \"%s\"", opt->dbname);
 	free(rc.dbname);
 
+	if (optind < argc) {
+		int t;
+
+		for (t = optind; t < argc; t++)
+			msg(3, "Non-option arg: %s", argv[t]);
+	}
+
 	/* Disable compiler warnings temporarily */
 	if (argc == argc) { }
 	if (argv == argv) { }
@@ -328,13 +335,6 @@ int main(int argc, char *argv[])
 		return print_license();
 
 	retval = do_your_thing_please(&opt, argc, argv);
-
-	if (optind < argc) {
-		int t;
-
-		for (t = optind; t < argc; t++)
-			msg(3, "Non-option arg: %s", argv[t]);
-	}
 
 	msg(3, "Returning from main() with value %d", retval);
 	return retval;
