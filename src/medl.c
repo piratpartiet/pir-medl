@@ -286,6 +286,7 @@ int do_your_thing_please(const struct Options *opt,
                          const int argc, char * const argv[])
 {
 	struct Rc rc;
+	int retval = EXIT_SUCCESS;
 
 	rc.dbname = get_dbname(opt);
 	if (!rc.dbname)
@@ -301,7 +302,7 @@ int do_your_thing_please(const struct Options *opt,
 			msg(3, "Non-option arg: %s", argv[t]);
 	}
 
-	return EXIT_SUCCESS;
+	return retval;
 }
 
 /*
