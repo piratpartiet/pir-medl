@@ -315,8 +315,7 @@ int main(int argc, char *argv[])
 
 	progname = argv[0];
 
-	retval = parse_options(&opt, argc, argv);
-	if (retval != EXIT_SUCCESS) {
+	if (parse_options(&opt, argc, argv) != EXIT_SUCCESS) {
 		fprintf(stderr, "%s: Option error\n", progname);
 		return EXIT_FAILURE;
 	}
