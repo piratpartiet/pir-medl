@@ -44,6 +44,11 @@
 #define STD_DBNAME  "%s/.pir-medl/pir-medl.sqlite"
 
 /*
+ * All commands specified on the command line must be referenced via the 
+ * appropriate CMD_* macros to avoid hardcoding.
+ */
+
+/*
  * Standard header files
  */
 

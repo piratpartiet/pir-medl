@@ -180,6 +180,8 @@ int usage(const int retval)
 	printf("  --version\n"
 	       "    Print version information.\n");
 	printf("\n");
+	printf("Subcommands:\n");
+	printf("\n");
 	free(logdir);
 
 	return retval;
@@ -295,6 +297,20 @@ int do_your_thing_please(const struct Options *opt,
 	msg(3, "argc = %d, argv[optind] = \"%s\"", argc, argv[optind]);
 	msg(3, "rc.dbname = \"%s\"", rc.dbname);
 	msg(3, "opt.dbname = \"%s\"", opt->dbname);
+
+	if (argv[optind]) {
+		const char *cmd = argv[optind];
+
+		msg(3, "argv[optind] is not NULL, setting cmd = \"%s\"", cmd);
+		fprintf(stderr, "%s: %s: Unknown command\n",
+				progname, cmd);
+		retval = EXIT_FAILURE;
+	} else {
+		msg(3, "argv[optind] is NULL");
+		fprintf(stderr, "%s: No command specified\n", progname);
+		retval = EXIT_FAILURE;
+	}
+
 	free(rc.dbname);
 
 	if (optind < argc) {
