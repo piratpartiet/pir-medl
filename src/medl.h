@@ -39,6 +39,7 @@
 
 #undef NDEBUG
 
+#define DB_VERSION  0 /* Increase if incompatible changes to the database */
 #define ENV_DBNAME  "MEDL_DB"
 #define STD_DBNAME  "%s/.pir-medl/pir-medl.sqlite"
 
@@ -55,6 +56,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 /*
  * Macros
@@ -86,6 +88,7 @@ struct Rc {
 #if 1 /* Set to 0 to test without prototypes */
 
 /* dbinit.c */
+extern int init_db(const char *dbfile);
 
 /* environ.c */
 extern char *get_dbname(const struct Options *opt);
