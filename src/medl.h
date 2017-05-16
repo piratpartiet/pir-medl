@@ -104,7 +104,8 @@ extern int choose_opt_action(struct Options *dest,
                              const int c, const struct option *opts);
 extern int parse_options(struct Options *dest,
                          const int argc, char * const argv[]);
-extern int do_your_thing_please(const struct Options *opt);
+extern int do_your_thing_please(const struct Options *opt,
+                                const int argc, char * const argv[]);
 
 #endif
 

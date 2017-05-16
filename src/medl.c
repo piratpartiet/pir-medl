@@ -282,7 +282,8 @@ int parse_options(struct Options *dest, const int argc, char * const argv[])
  * EXIT_FAILURE.
  */
 
-int do_your_thing_please(const struct Options *opt)
+int do_your_thing_please(const struct Options *opt,
+                         const int argc, char * const argv[])
 {
 	struct Rc rc;
 
@@ -292,6 +293,10 @@ int do_your_thing_please(const struct Options *opt)
 	msg(3, "rc.dbname = \"%s\"", rc.dbname);
 	msg(3, "opt.dbname = \"%s\"", opt->dbname);
 	free(rc.dbname);
+
+	/* Disable compiler warnings temporarily */
+	if (argc == argc) { }
+	if (argv == argv) { }
 
 	return EXIT_SUCCESS;
 }
@@ -322,7 +327,7 @@ int main(int argc, char *argv[])
 	if (opt.license)
 		return print_license();
 
-	retval = do_your_thing_please(&opt);
+	retval = do_your_thing_please(&opt, argc, argv);
 
 	if (optind < argc) {
 		int t;
