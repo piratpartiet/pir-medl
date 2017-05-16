@@ -19,10 +19,13 @@ oppdatert samtidig.
 Status
 ------
 
-Har satt opp forslag til databasestruktur og har startet på `medl`. Init 
-av databasen funker, men man vil jo gjerne at det skjer mer enn det. Til 
-å begynne med blir det en kommandolinjeklient, men det kan klaskes på 
-GUI, ncurses og/eller webgrensesnitt etterhvert. Det skal også kunne 
+Har satt opp forslag til databasestruktur og har startet på `medl`. 
+Foreløpig skjønner den disse kommandoene:
+
+  - `medl diag`
+
+Til å begynne med blir det en kommandolinjeklient, men det kan klaskes 
+på GUI, ncurses og/eller webgrensesnitt etterhvert. Det skal også kunne 
 brukes som et API der `medl` mottar kommandoer i form av JSON fra stdin, 
 gjør sine ting og leverer respons og data som JSON til stdout.
 
