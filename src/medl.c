@@ -182,6 +182,9 @@ int usage(const int retval)
 	printf("\n");
 	printf("Subcommands:\n");
 	printf("\n");
+	printf("  diag\n"
+	       "    Display various information about the system.\n");
+	printf("\n");
 	free(logdir);
 
 	return retval;
@@ -302,9 +305,13 @@ int do_your_thing_please(const struct Options *opt,
 		const char *cmd = argv[optind];
 
 		msg(3, "argv[optind] is not NULL, setting cmd = \"%s\"", cmd);
-		fprintf(stderr, "%s: %s: Unknown command\n",
-				progname, cmd);
-		retval = EXIT_FAILURE;
+		if (!strcmp(argv[optind], CMD_DIAG)) {
+			printf("rc.dbname = \"%s\"\n", rc.dbname);
+		} else {
+			fprintf(stderr, "%s: %s: Unknown command\n",
+			                progname, cmd);
+			retval = EXIT_FAILURE;
+		}
 	} else {
 		msg(3, "argv[optind] is NULL");
 		fprintf(stderr, "%s: No command specified\n", progname);

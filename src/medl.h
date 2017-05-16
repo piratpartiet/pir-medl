@@ -47,6 +47,7 @@
  * All commands specified on the command line must be referenced via the 
  * appropriate CMD_* macros to avoid hardcoding.
  */
+#define CMD_DIAG  "diag"
 
 /*
  * Standard header files
