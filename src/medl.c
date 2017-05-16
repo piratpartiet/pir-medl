@@ -184,6 +184,8 @@ int usage(const int retval)
 	printf("\n");
 	printf("  diag\n"
 	       "    Display various information about the system.\n");
+	printf("  init\n"
+	       "    Initialise the SQLite database if it doesn't exist.\n");
 	printf("\n");
 	free(logdir);
 
@@ -307,6 +309,8 @@ int do_your_thing_please(const struct Options *opt,
 		msg(3, "argv[optind] is not NULL, setting cmd = \"%s\"", cmd);
 		if (!strcmp(argv[optind], CMD_DIAG)) {
 			printf("rc.dbname = \"%s\"\n", rc.dbname);
+		} else if (!strcmp(argv[optind], CMD_INIT)) {
+			retval = init_db(rc.dbname);
 		} else {
 			fprintf(stderr, "%s: %s: Unknown command\n",
 			                progname, cmd);

@@ -23,6 +23,7 @@ Har satt opp forslag til databasestruktur og har startet på `medl`.
 Foreløpig skjønner den disse kommandoene:
 
   - `medl diag`
+  - `medl init`
 
 Til å begynne med blir det en kommandolinjeklient, men det kan klaskes 
 på GUI, ncurses og/eller webgrensesnitt etterhvert. Det skal også kunne 

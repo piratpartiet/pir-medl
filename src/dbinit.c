@@ -20,11 +20,17 @@
 
 #include "medl.h"
 
+/*
+ * init_db() - Initialise the SQLite file dbfile with the standard tables and 
+ * metadata. Returns EXIT_SUCCESS or EXIT_FAILURE.
+ */
+
 int init_db(const char *dbfile)
 {
 	sqlite3 *db;
 	int result;
 	char *sql;
+	char *errmsg;
 
 	assert(dbfile);
 	assert(strlen(dbfile));
@@ -45,6 +51,7 @@ int init_db(const char *dbfile)
 		sqlite3_close_v2(db);
 		return EXIT_FAILURE;
 	}
+
 	sql = sqlite3_mprintf(
 	    "BEGIN TRANSACTION;\n"
 	    "CREATE TABLE meta (\n"
@@ -94,8 +101,17 @@ int init_db(const char *dbfile)
 	    "COMMIT;\n",
 	    DB_VERSION
 	);
-	puts(sql);
+
+	result = sqlite3_exec(db, sql, 0, 0, &errmsg);
+	if (result != SQLITE_OK ) {
+		myerror("init_db(): Cannot CREATE TABLE: %s\n", errmsg);
+		sqlite3_free(errmsg);
+		sqlite3_close_v2(db);
+		return EXIT_FAILURE;
+	}
+
 	sqlite3_free(sql);
+
 	result = sqlite3_close_v2(db);
 	if (result != SQLITE_OK) {
 		myerror("%s: Error when closing database: %s",
