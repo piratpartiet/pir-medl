@@ -20,4 +20,52 @@
 
 #include "medl.h"
 
+/*
+ * open_db() - Open the database and return database pointer. If the database 
+ * doesn't exist or any errors occur, return NULL.
+ */
+
+sqlite3 *open_db(const char *dbfile)
+{
+	int result;
+	sqlite3 *db;
+
+	assert(dbfile);
+	if (!strlen(dbfile)) {
+		myerror("Empty database file name");
+		return NULL;
+	}
+
+	result = sqlite3_open_v2(dbfile, &db,
+	                         SQLITE_OPEN_READWRITE, NULL);
+	if (result != SQLITE_OK) {
+		myerror("Cannot open SQLite database '%s': %s",
+		        dbfile, sqlite3_errmsg(db));
+		sqlite3_close_v2(db);
+		db = NULL;
+	}
+
+	return db;
+}
+
+/*
+ * close_db() - Close the database pointed to by db, ignore NULL. Returns 
+ * EXIT_SUCCESS or EXIT_FAILURE.
+ */
+
+int close_db(sqlite3 *db)
+{
+	if (!db)
+		return EXIT_SUCCESS;
+
+	if (sqlite3_close_v2(db) != SQLITE_OK) {
+		myerror("Error when closing SQlite database: %s",
+		        sqlite3_errmsg(db));
+		return EXIT_FAILURE;
+	}
+	db = NULL;
+
+	return EXIT_SUCCESS;
+}
+
 /* vim: set ts=8 sw=8 sts=8 noet fo+=w tw=79 fenc=UTF-8 : */

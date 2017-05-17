@@ -96,6 +96,8 @@ struct Rc {
 #if 1 /* Set to 0 to test without prototypes */
 
 /* database.c */
+extern sqlite3 *open_db(const char *dbfile);
+extern int close_db(sqlite3 *db);
 
 /* dbinit.c */
 extern int init_db(const char *dbfile);
