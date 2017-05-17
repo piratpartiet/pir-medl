@@ -3,7 +3,6 @@
 
 .PHONY: test
 test: build
-	./medl-init.t
 	./medl.t
 
 .PHONY: build
