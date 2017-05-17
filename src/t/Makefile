@@ -11,6 +11,7 @@ build:
 
 .PHONY: clean
 clean:
+	rm -f *.tmp jukmifgguggh tmp-*
 
 .PHONY: valgrind
 valgrind: build

@@ -83,6 +83,7 @@ sub main {
 	}
 
 	test_standard_options();
+	test_executable();
 
 	todo_section:
 	;
@@ -121,6 +122,121 @@ sub test_standard_options {
 	        '/^$/',
 	        0,
 	        'Option --version returns version number');
+	return;
+}
+
+sub test_executable {
+	diag("Invalid or missing subcommand");
+	testcmd("$CMD",
+	        "",
+	        "../$CMD_BASENAME: No command specified\n",
+	        1,
+	        'Without arguments or options');
+	testcmd("$CMD gurgle",
+	        "",
+	        "../$CMD_BASENAME: gurgle: Unknown command\n",
+	        1,
+	        'Specify unknown command');
+	testcmd("$CMD ''",
+	        "",
+	        "../$CMD_BASENAME: : Unknown command\n",
+	        1,
+	        'Specify empty command');
+
+	test_exec_options();
+	test_cmd_diag();
+	test_cmd_init();
+
+	return;
+}
+
+sub test_exec_options {
+	diag("-d/--dbname");
+	testcmd("$CMD -d",
+	        "",
+	        "../$CMD_BASENAME: option requires an argument -- 'd'\n" .
+	          "../$CMD_BASENAME: Option error\n",
+	        1,
+	        '-d without argument');
+	testcmd("$CMD --dbname",
+	        "",
+	        "../$CMD_BASENAME: option '--dbname' requires an argument\n" .
+	          "../$CMD_BASENAME: Option error\n",
+	        1,
+	        '--dbname without argument');
+	testcmd("$CMD -d blurfl",
+	        "",
+	        "../$CMD_BASENAME: No command specified\n",
+	        1,
+	        '-d with argument but no command');
+}
+
+sub test_cmd_diag {
+	diag("$CMD_BASENAME diag");
+	likecmd("$CMD diag",
+	        '/^rc\.dbname = ".+"\n$/s',
+	        '/^$/',
+	        0,
+	        'diag without options');
+	testcmd("MEDL_DB=jukmifgguggh $CMD diag",
+	        "rc.dbname = \"jukmifgguggh\"\n",
+	        "",
+	        0,
+	        'Use MEDL_DB environment variable');
+	testcmd("$CMD diag -d jukmifgguggh",
+	        "rc.dbname = \"jukmifgguggh\"\n",
+	        "",
+	        0,
+	        'Use diag -d');
+	testcmd("$CMD diag --dbname jukmifgguggh",
+	        "rc.dbname = \"jukmifgguggh\"\n",
+	        "",
+	        0,
+	        'Use diag --dbname');
+	testcmd("MEDL_DB=nowaynorway $CMD diag --dbname jukmifgguggh",
+	        "rc.dbname = \"jukmifgguggh\"\n",
+	        "",
+	        0,
+	        'diag: --dbname has priority over the MEDL_DB envvar');
+
+	return;
+}
+
+sub test_cmd_init {
+	diag("$CMD_BASENAME init");
+	my $tmpdb = 'tmp-db.tmp';
+
+	unlink($tmpdb);
+	ok(!-e $tmpdb, "$tmpdb doesn't exist");
+	testcmd("$CMD init -d $tmpdb",
+	        "",
+	        "",
+	        0,
+	        "Create $tmpdb with -d");
+	ok(-e $tmpdb, "$tmpdb exists");
+	testcmd("$CMD init --dbname $tmpdb",
+	        "",
+	        "../$CMD_BASENAME: $tmpdb: Database already exists\n",
+	        1,
+	        "Refuse to overwrite $tmpdb with --dbname");
+	ok(unlink($tmpdb), "Delete $tmpdb");
+	testcmd("MEDL_DB=$tmpdb $CMD init",
+	        "",
+	        "",
+	        0,
+	        "Specify $tmpdb via the MEDL_DB envvar");
+	testcmd("MEDL_DB=$tmpdb $CMD init",
+	        "",
+	        "../$CMD_BASENAME: $tmpdb: Database already exists\n",
+	        1,
+	        "Refuse to overwrite $tmpdb, using MEDL_DB");
+	testcmd("MEDL_DB=jukmifgguggh $CMD init -d $tmpdb",
+	        "",
+	        "../$CMD_BASENAME: $tmpdb: Database already exists\n",
+	        1,
+	        "init: -d has priority over MEDL_DB");
+	ok(unlink($tmpdb), "Delete $tmpdb");
+
 	return;
 }
 
