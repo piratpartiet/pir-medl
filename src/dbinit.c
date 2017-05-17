@@ -33,9 +33,12 @@ int init_db(const char *dbfile)
 	char *errmsg;
 
 	assert(dbfile);
-	assert(strlen(dbfile));
 	msg(3, "init_db(\"%s\")", dbfile);
 
+	if (!strlen(dbfile)) {
+		myerror("Empty database name specified");
+		return EXIT_FAILURE;
+	}
 	if (access(dbfile, F_OK) != -1) {
 		fprintf(stderr, "%s: %s: Database already exists\n",
 		                progname, dbfile);

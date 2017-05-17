@@ -208,6 +208,11 @@ sub test_cmd_init {
 
 	unlink($tmpdb);
 	ok(!-e $tmpdb, "$tmpdb doesn't exist");
+	testcmd("$CMD init -d ''",
+	        "",
+	        "../$CMD_BASENAME: Empty database name specified\n",
+	        1,
+	        'init: -d with empty argument');
 	testcmd("$CMD init -d $tmpdb",
 	        "",
 	        "",
