@@ -18,8 +18,8 @@
  * this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _medl_add_H
-#define _medl_add_H
+#ifndef _MEDL_H
+#define _MEDL_H
 
 /*
  * Defines
@@ -123,6 +123,6 @@ extern int do_your_thing_please(const struct Options *opt,
 
 extern char *progname;
 
-#endif /* ifndef _medl_add_H */
+#endif /* ifndef _MEDL_H */
 
 /* vim: set ts=8 sw=8 sts=8 noet fo+=w tw=79 fenc=UTF-8 : */
