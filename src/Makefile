@@ -1,8 +1,8 @@
 # pir-medl.git/src/Makefile
 # File ID: c608ae98-38e6-11e7-8438-f74d993421b0
 
-OBJS = dbinit.o environ.o medl.o sqlite3.o
-CFILES = dbinit.c environ.c medl.c
+OBJS = database.o dbinit.o environ.o medl.o sqlite3.o
+CFILES = database.c dbinit.c environ.c medl.c
 HFILES = medl.h
 DEPS = $(HFILES) Makefile
 CC = cc
@@ -14,6 +14,9 @@ EXEC = medl
 
 $(EXEC): $(OBJS)
 	$(LD) -o $(EXEC) $(LDFLAGS) $(OBJS) $(LIBS)
+
+database.o: database.c $(DEPS)
+	$(CC) $(CCFLAGS) database.c
 
 dbinit.o: dbinit.c $(DEPS)
 	$(CC) $(CCFLAGS) dbinit.c

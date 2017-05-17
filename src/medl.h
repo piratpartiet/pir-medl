@@ -95,6 +95,8 @@ struct Rc {
 
 #if 1 /* Set to 0 to test without prototypes */
 
+/* database.c */
+
 /* dbinit.c */
 extern int init_db(const char *dbfile);
 
