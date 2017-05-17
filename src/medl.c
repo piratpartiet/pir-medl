@@ -323,13 +323,6 @@ int do_your_thing_please(const struct Options *opt,
 
 	free(rc.dbname);
 
-	if (optind < argc) {
-		int t;
-
-		for (t = optind; t < argc; t++)
-			msg(3, "Non-option arg: %s", argv[t]);
-	}
-
 	return retval;
 }
 
