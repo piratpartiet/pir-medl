@@ -312,13 +312,12 @@ int do_your_thing_please(const struct Options *opt,
 		} else if (!strcmp(argv[optind], CMD_INIT)) {
 			retval = init_db(rc.dbname);
 		} else {
-			fprintf(stderr, "%s: %s: Unknown command\n",
-			                progname, cmd);
+			myerror("%s: Unknown command", cmd);
 			retval = EXIT_FAILURE;
 		}
 	} else {
 		msg(3, "argv[optind] is NULL");
-		fprintf(stderr, "%s: No command specified\n", progname);
+		myerror("No command specified");
 		retval = EXIT_FAILURE;
 	}
 
@@ -346,7 +345,7 @@ int main(int argc, char *argv[])
 	progname = argv[0];
 
 	if (parse_options(&opt, argc, argv) != EXIT_SUCCESS) {
-		fprintf(stderr, "%s: Option error\n", progname);
+		myerror("Option error");
 		return EXIT_FAILURE;
 	}
 

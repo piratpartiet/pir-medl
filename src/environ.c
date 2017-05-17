@@ -67,9 +67,8 @@ char *get_dbname(const struct Options *opt)
 		}
 		snprintf(retval, size, STD_DBNAME, getenv("HOME"));
 	} else {
-		fprintf(stderr, "%s: $%s and $HOME environment "
-		                "variables are not defined, cannot "
-		                "create dbname path\n", progname, ENV_DBNAME);
+		myerror("$%s and $HOME environment variables are not defined, "
+		        "cannot create dbname path", ENV_DBNAME);
 		return NULL;
 	}
 

@@ -40,8 +40,7 @@ int init_db(const char *dbfile)
 		return EXIT_FAILURE;
 	}
 	if (access(dbfile, F_OK) != -1) {
-		fprintf(stderr, "%s: %s: Database already exists\n",
-		                progname, dbfile);
+		myerror("%s: Database already exists", dbfile);
 		return EXIT_FAILURE;
 	}
 
